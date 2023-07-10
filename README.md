@@ -6,6 +6,17 @@ It took about 5 hours to implement, but that's largely because I chose this as a
 
 I saw in the PDF that you use `lit`.  I'm tangentially familiar with `lit` via the `htm` method of component templating; it's the basis of my personal [`app-skeleton`](https://github.com/Fordi/app-skeleton) template, which targets using CDN and zero compilation.  So, that's a nice bonus: I'm familiar with the syntactical oddities and pitfalls involved.
 
+## Running it
+
+Standard method:
+
+```bash
+nvm install $(cat .nvmrc)
+npm run start
+```
+
+It should open your browser to `http://localhost:3000` with the app running in it.
+
 ## Architecture
 
 I leveraged the `setupProxy` configuration endpoint of `create-react-app` to squeeze in a simple API server.  It's strictly in-memory.
