@@ -22,17 +22,22 @@ function MaterialsListItem({ material, divider, selected, onClick }) {
 export default function MaterialsList({ materials, onClick, selectedId }) {
   return (
     <Paper>
-      <List>
-        {materials?.map((material, index) => (
-          <MaterialsListItem
-            key={material.id}
-            material={material}
-            divider={index !== 0}
-            onClick={(e) => onClick(e, material)}
-            selected={material.id === selectedId}
-          />
-        ))}
-      </List>
+      {materials?.length
+        ? (
+          <List>
+            {materials?.map((material, index) => (
+              <MaterialsListItem
+                key={material.id}
+                material={material}
+                divider={index !== 0}
+                onClick={(e) => onClick(e, material)}
+                selected={material.id === selectedId}
+              />
+            ))}
+          </List>
+        )
+       : "No materials"
+      }
     </Paper>
   );
 }
