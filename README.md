@@ -30,4 +30,4 @@ The app is React+MUI, and I tried to follow the documentation as best as possibl
 * In the app, I have it updating the server on every keystroke.  I'm not really happy with that, for performance reasons, but I'd already run over time.
 * No thousands separators in large numbers.  I know how to do this, roughly (I've done spaces in CC numbers), but there's a bunch of little interaction pitfalls in the text field, so I just didn't prioritize it.
 * The UI doesn't exactly match the mockup.  For example, the input labels are Material's default - which looks good, but for a pro job, it would have to match the existing UI's design language.  There's also assorted chrome inconsistencies that I'd like to have fixed, like the list not stretching to its container and the container not scrolling when there are too many materials in the catalog.
-
+* Started on unit tests, but I ran out of time.  Also hit a weird wall with the CRA jest config and tests of the stuff called in by setupProxy - the context is assumed to be a browser, so I get a polyfill instead of real `fs`.

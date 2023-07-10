@@ -1,8 +1,15 @@
 const { readFile, writeFile } = require('fs/promises');
 
+async function getData(data_file) {
+  try {
+    return JSON.parse(await readFile(data_file, 'utf8'));
+  } catch (e) {
+    return {};
+  }
+}
 
 async function get(data_file, id) {
-  const data = JSON.parse(await readFile(data_file, 'utf8'));
+  const data = getData(data_file);
   if (!!id) {
     return { ...data[id], id };
   }
@@ -10,7 +17,7 @@ async function get(data_file, id) {
 };
 
 async function post(data_file, { name, color, volume, cost, deliveryDate }) {
-  const data = JSON.parse(await readFile(data_file, 'utf8'));
+  const data = getData(data_file);
   const id = Math.random().toString(36).substring(2);
   data[id] = { name, color, volume, cost, deliveryDate };
   await writeFile(data_file, JSON.stringify(data, null, 2), 'utf8');
@@ -18,7 +25,7 @@ async function post(data_file, { name, color, volume, cost, deliveryDate }) {
 }
 
 async function put(data_file, id, update) {
-  const data = JSON.parse(await readFile(data_file, 'utf8'));
+  const data = getData(data_file);
   if (!id) {
     throw new Error('Method PUT must contain an ID');
   }
@@ -28,7 +35,7 @@ async function put(data_file, id, update) {
 }
 
 async function remove(data_file, id) {
-  const data = JSON.parse(await readFile(data_file, 'utf8'));
+  const data = getData(data_file);
   if (!id) {
     throw new Error('Method DELETE must contain an ID');
   }
@@ -63,4 +70,10 @@ function endpoint(data_file) {
   };
 };
 
-module.exports = endpoint;
+module.exports = {
+  endpoint,
+  get,
+  put,
+  post,
+  remove,
+};

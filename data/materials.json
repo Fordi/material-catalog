@@ -12,11 +12,5 @@
     "cost": 0.5,
     "deliveryDate": "2023-12-10",
     "color": "#00d7b7"
-  },
-  "prdoz80j7a": {
-    "name": "Testing",
-    "color": "#FFFFFF",
-    "volume": "200000",
-    "cost": "0.1"
   }
 }

@@ -20,7 +20,6 @@ const mockData = [
   }
 ];
 
-
 test('renders the expected line items', () => {
   render(<MaterialsList materials={mockData} onClick={() => {}} selectedId={null} />);
   mockData.forEach((item) => {
