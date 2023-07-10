@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Materials catalog app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an app that implements the PDF design doc.
 
-## Available Scripts
+It took about 5 hours to implement, but that's largely because I chose this as an opportunity to learn Material UI (given the theme of the project ☺).  I did this because I've been wanting to learn MUI, but never got to it, and because it would better reflect my ability to adapt to the new and unfamiliar.  If I'd done this using, say, tailwind and my own components, it'd likely have fallen within the alotted 3 hours.  But, you know, I was having fun, and I had until Monday.
 
-In the project directory, you can run:
+I saw in the PDF that you use `lit`.  I'm tangentially familiar with `lit` via the `htm` method of component templating; it's the basis of my personal [`app-skeleton`](https://github.com/Fordi/app-skeleton) template, which targets using CDN and zero compilation.  So, that's a nice bonus: I'm familiar with the syntactical oddities and pitfalls involved.
 
-### `npm start`
+## Architecture
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I leveraged the `setupProxy` configuration endpoint of `create-react-app` to squeeze in a simple API server.  It's strictly in-memory.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app is React+MUI, and I tried to follow the documentation as best as possible.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Known issues
 
-### `npm run build`
+* The `color` field is just a dumb textbox with a color hint.  I wanted to do a full color picker, but couldn't find a good one in time, and didn't want to spend a lot of time making it.  It wasn't an _explicit_ requirement, so I figured I could get away with it.
+* In the app, I have it updating the server on every keystroke.  I'm not really happy with that, for performance reasons, but I'd already run over time.
+* No thousands separators in large numbers.  I know how to do this, roughly (I've done spaces in CC numbers), but there's a bunch of little interaction pitfalls in the text field, so I just didn't prioritize it.
+* The UI doesn't exactly match the mockup.  For example, the input labels are Material's default - which looks good, but for a pro job, it would have to match the existing UI's design language.  There's also assorted chrome inconsistencies that I'd like to have fixed, like the list not stretching to its container and the container not scrolling when there are too many materials in the catalog.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

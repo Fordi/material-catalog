@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.material-editor {
+  width: 100vw;
   min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #29292f;
+  color: #ffffff;
+  padding: 1rem;
+  display: flex;
+}
+.material-editor>* {
+  flex: 0 0 auto;
+}
+.material-editor>.material-editor__content {
+  flex: 1 1 auto;
+}
+.material-editor .material-editor__list {
+  margin: 1rem;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.material-editor .material-editor__list>ul {
+  flex: 1 1 auto;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.material-editor .material-editor__properties {
+  margin: 1rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.material-editor__properties .MuiPaper-root {
+  flex: 1 1 auto;
+}
+.material-editor__properties .MuiGrid-root {
+  /* fix alignment weirdness with nested grids of different types */
+  margin-top: 0;
+  padding: 0 1rem 1rem;
+}
+/* Dirty hack; wouldn't work for all themes */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
