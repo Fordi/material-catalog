@@ -19,6 +19,7 @@ function App() {
   const getMaterials = useCallback(async () => {
     const m = await materialsResource.get();
     setMaterials(m);
+    return m;
   }, [setMaterials]);
 
   const updateSelected = useCallback((key, value) => {
@@ -36,11 +37,12 @@ function App() {
   }, [selected]);
 
   const newMaterial = async () => {
+    const newObj = await materialsResource.create({});
     setMaterials((oldM) => [
       ...oldM,
       newObj,
     ]);
-    const newObj = await materialsResource.create({});
+    setSelected(newObj);
     const m = await getMaterials();
     setSelected(m.find(({ id }) => id === newObj.id));
   };

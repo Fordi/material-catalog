@@ -9,7 +9,7 @@ async function getData(data_file) {
 }
 
 async function get(data_file, id) {
-  const data = getData(data_file);
+  const data = await getData(data_file);
   if (!!id) {
     return { ...data[id], id };
   }
@@ -17,7 +17,7 @@ async function get(data_file, id) {
 };
 
 async function post(data_file, { name, color, volume, cost, deliveryDate }) {
-  const data = getData(data_file);
+  const data = await getData(data_file);
   const id = Math.random().toString(36).substring(2);
   data[id] = { name, color, volume, cost, deliveryDate };
   await writeFile(data_file, JSON.stringify(data, null, 2), 'utf8');
@@ -25,7 +25,7 @@ async function post(data_file, { name, color, volume, cost, deliveryDate }) {
 }
 
 async function put(data_file, id, update) {
-  const data = getData(data_file);
+  const data = await getData(data_file);
   if (!id) {
     throw new Error('Method PUT must contain an ID');
   }
@@ -35,7 +35,7 @@ async function put(data_file, id, update) {
 }
 
 async function remove(data_file, id) {
-  const data = getData(data_file);
+  const data = await getData(data_file);
   if (!id) {
     throw new Error('Method DELETE must contain an ID');
   }
